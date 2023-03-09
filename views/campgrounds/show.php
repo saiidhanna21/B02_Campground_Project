@@ -37,7 +37,6 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
                             </button>';
                         }
                     }
-                    //user jibo men sa7bo
                     echo '</div>
         <div class="card mb-3">
             <div class="card-body">
@@ -53,9 +52,7 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
                         if ($userID == $ownerID) {
                             echo '<div class="card-body">
                 <a href="http://localhost:3000/views/campgrounds/editCampground.php?id=' . $row['id'] . '" class="card-link btn btn-info">Edit</a>
-                <form class="d-inline" action="/campgrounds/' . $row["id"] . '?_method=delete" method="post">
-                    <button class="btn btn-danger" class="card-link">Delete</a>
-                </form>
+                <a class="btn btn-danger" class="card-link" href="../../controllers/campgrounds/deleteCampground.php?id=' . $row['id'] . '"">Delete</a>
                 </div>';
                         }
                     }
