@@ -5,7 +5,7 @@ if (empty($_SESSION["username"])) {
     exit();
 }
 if (!empty($_POST)) {
-    include('../../sanitize.php');
+    include('../../utils/sanitize.php');
     $_POST = sanitize($_POST);
     extract($_POST);
     $user = $_SESSION["username"];

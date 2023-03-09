@@ -26,7 +26,7 @@ include('../../controllers/campgrounds/addCampground.php');
                     <label class="form-label" for="price">Campground Price: </label>
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">$</span>
-                        <input type="number" class="form-control" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="price" step='0.01' min="0" required />
+                        <input type="number" class="form-control" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="price" step='0.01' min='0' required />
                         <div class="valid-feedback">Looks good!</div>
                     </div>
                 </div>

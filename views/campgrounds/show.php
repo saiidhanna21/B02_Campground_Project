@@ -61,13 +61,11 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
                     }
                     echo '
                 </div>
-            </div>';
-                    echo '<div class="col-4 offset-1">
+            </div>';?>
+    <div class="col-4 offset-1">
         <h2>Leave a Review</h2>
-        <form action="/campgrounds/' . $row["id"] . '/reviews" method="post" class="mb-3 validated-form" novalidate>
+        <form action="" method="post" class="mb-3 validated-form" novalidate>
             <div>
-                <!-- <label for="review_rating" class="form-label">Rating</label>
-                <input type="range" class="form-range" name="review_rating" id="review_rating" min="1" max="5"> -->
                 <fieldset class="starability-basic">
                     <input type="radio" id="no-rate" class="input-no-rate" name="review_rating" value="3" checked aria-label="No rating." />
                     <input type="radio" id="first-rate1" name="review_rating" value="1" />
@@ -90,8 +88,9 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
                 </div>
             </div>
             <button class="btn btn-success">Submit</button>
-        </form>';
-                    /*for (let review of camp.reviews){
+        </form>
+        <?php
+                    /*<%=//for (let review of camp.reviews){%>
         <div class="mb-3 card">
             <div class="card-body">
                 <h6 class="card-subtitle mb-2">
