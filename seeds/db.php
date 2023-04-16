@@ -12,6 +12,12 @@ $query = "CREATE TABLE IF NOT EXISTS `users`( `id` INT NOT NULL AUTO_INCREMENT ,
                         `email` VARCHAR(30) NOT NULL, 
                         PRIMARY KEY (`id`));
                         
+CREATE TABLE IF NOT EXISTS `availability` ( `id` INT NOT NULL AUTO_INCREMENT, 
+                    `campground_id` INT NOT NULL , 
+                    `date` DATE NOT NULL , 
+                    `available_camps` INT NOT NULL ,
+                                           PRIMARY KEY (`id`),
+            CONSTRAINT FOREIGN KEY (`campground_id`)REFERENCES `campgrounds`(`id`) ON DELETE CASCADE);
                         
 CREATE TABLE IF NOT EXISTS `campgrounds` ( `id` INT NOT NULL AUTO_INCREMENT, 
                     `title` VARCHAR(20) NOT NULL , 
@@ -19,7 +25,12 @@ CREATE TABLE IF NOT EXISTS `campgrounds` ( `id` INT NOT NULL AUTO_INCREMENT,
                     `description` VARCHAR(180) NOT NULL , 
                     `location` VARCHAR(100) NOT NULL ,
                     `owner_id` INT NOT NULL,
-                    `image_id` INT NOT NULL,                  
+                    `image_id` INT NOT NULL,
+					`owner_id` INT NOT NULL,
+                    `start_date` DATE NOT NULL,
+					`end_date` DATE NOT NULL,
+                    `camps_number` INT NOT NULL,
+					`rating` DECIMAL NOT NULL ,
                     PRIMARY KEY (`id`),
             CONSTRAINT FOREIGN KEY (`owner_id`)REFERENCES `users`(`id`) ON DELETE CASCADE,
             CONSTRAINT FOREIGN KEY (`image_id`)REFERENCES `images`(`id`)ON DELETE CASCADE);                    
@@ -31,11 +42,13 @@ CREATE TABLE IF NOT EXISTS `images` ( `id` INT NOT NULL AUTO_INCREMENT ,
 
 
 
-CREATE TABLE IF NOT EXISTS `reviews` ( `userId` INT NOT NULL ,
+CREATE TABLE IF NOT EXISTS `reviews` ( 
+					`id` INT NOT NULL ,
+					`userId` INT NOT NULL ,
                     `campId` INT NOT NULL,                  
                     `rating` ENUM('1','2','3','4','5') NOT NULL , 
                     `text` TEXT NOT NULL ,
             CONSTRAINT FOREIGN KEY (`userId`)REFERENCES `users`(`id`) ON DELETE CASCADE,
             CONSTRAINT FOREIGN KEY (`campId`)REFERENCES `campgrounds`(`id`) ON DELETE CASCADE,       
-            CONSTRAINT PRIMARY KEY (`userId`,`campId`))";
+            CONSTRAINT PRIMARY KEY (`id`))";
 ?>
