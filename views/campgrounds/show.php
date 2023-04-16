@@ -45,10 +45,10 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted">' . $row["location"] . '</li>
-                <li class="list-group-item text-muted">Suggested by ' . $ownerName . '</li>
+                <li class="list-group-item text-muted">Owned by ' . $ownerName . '</li>
 				<li class="list-group-item">OPEN From ' . $row["start_date"] . " till " . $row["end_date"] . '</li>
                 <li class="list-group-item">$' . $row["price"] . '/night</li>
-			    <li class="list-group-item">Number of camps is ' . $row["camps_number"] . '</li>
+			    <li class="list-group-item">Number of available camps is ' . $row["camps_number"] . '</li>
             </ul>';
                     if (!empty($_SESSION["username"])) {
                         if ($userID == $ownerID) {
@@ -61,55 +61,37 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
                     echo '
                 </div>
             </div>'; ?>
-                    <div class="col-4 offset-1">
-                        <h2>Leave a Review</h2>
-                        <form action="" method="post" class="mb-3 validated-form" novalidate>
-                            <div>
-                                <fieldset class="starability-basic">
-                                    <input type="radio" id="no-rate" class="input-no-rate" name="review_rating" value="3" checked aria-label="No rating." />
-                                    <input type="radio" id="first-rate1" name="review_rating" value="1" />
-                                    <label for="first-rate1" title="Terrible">1 star</label>
-                                    <input type="radio" id="first-rate2" name="review_rating" value="2" />
-                                    <label for="first-rate2" title="Not good">2 stars</label>
-                                    <input type="radio" id="first-rate3" name="review_rating" value="3" />
-                                    <label for="first-rate3" title="Average">3 stars</label>
-                                    <input type="radio" id="first-rate4" name="review_rating" value="4" />
-                                    <label for="first-rate4" title="Very good">4 stars</label>
-                                    <input type="radio" id="first-rate5" name="review_rating" value="5" />
-                                    <label for="first-rate5" title="Amazing">5 stars</label>
-                                </fieldset>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="review_body">Review</label>
-                                <textarea class="form-control" name="review_body" id="review_body" cols="30" rows="3" required></textarea>
-                                <div class="valid-feedback">
-                                    Looks Good
-                                </div>
-                            </div>
-                            <button class="btn btn-success">Submit</button>
-                        </form>
-                        <?php
-                        /*<%=//for (let review of camp.reviews){%>
-        <div class="mb-3 card">
-            <div class="card-body">
-                <h6 class="card-subtitle mb-2">
-                    <%=//review.author.username %>
-                </h6>
-                <p class="starability-result" data-rating="<%=//review.rating%>">
-                    Rated: <%=//review.rating%> stars
-                </p>
-                <p class="card-text">
-                    Review: <%=///review.body %>
-                </p>
-                <%// if(currentUser && review.author.equals(currentUser._id)){ %>
-                <form action="/campgrounds/<%=//camp._id%>/reviews/<%=//review._id%>?_method=delete" method="post">
-                    <button class="btn btn-danger btn-sm">Delete</button>
-                </form>
-                <%//}%>
-            </div>
-        </div>
-        <%//}%>
-    </div>
-</div>*/
-                        echo '</div>';
-                        ?>
+                        <div class="col-4 offset-1">
+                            <h2>Leave a Review</h2>
+                                <form action="../../controllers/reviews/addReview.php" method="post" class="mb-3 validated-form" novalidate>
+                                    <input type="hidden" name="id" value="<?php echo $id?>"/>
+                                    <input type="hidden" name="userID" value="<?php echo $userID?>"/>
+                                    <div>
+                                        <fieldset class="starability-basic">
+                                            <input type="radio" id="no-rate" class="input-no-rate" name="review_rating" value="5" checked aria-label="No rating." />
+                                            <input type="radio" id="first-rate1" name="review_rating" value="1" />
+                                            <label for="first-rate1" title="Terrible">1 star</label>
+                                            <input type="radio" id="first-rate2" name="review_rating" value="2" />
+                                            <label for="first-rate2" title="Not good">2 stars</label>
+                                            <input type="radio" id="first-rate3" name="review_rating" value="3" />
+                                            <label for="first-rate3" title="Average">3 stars</label>
+                                            <input type="radio" id="first-rate4" name="review_rating" value="4" />
+                                            <label for="first-rate4" title="Very good">4 stars</label>
+                                            <input type="radio" id="first-rate5" name="review_rating" value="5" />
+                                            <label for="first-rate5" title="Amazing">5 stars</label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="review_body">Review</label>
+                                        <textarea class="form-control" name="review_body" id="review_body" cols="30" rows="3" required></textarea>
+                                        <div class="valid-feedback">
+                                            Looks Good
+                                        </div>
+                                    </div>
+                                    <button name='add_review' class="btn btn-success">Submit</button>
+
+                                </form>
+                                <?php
+                                    include('../reviews/show.php');
+                                    echo '<script src="../../public/javascripts/validateForms.js"></script>';
+                                ?>                        

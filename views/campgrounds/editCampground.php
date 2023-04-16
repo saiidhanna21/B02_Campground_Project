@@ -28,7 +28,7 @@ if (isset($_SESSION['flash'])) {
                             <div class="mb-3">
                                 <label class="form-label" for="start_date">Start Date:
                                 </label>
-                                <input class="form-control" type="date" name="start_date" id="start_date" value="<?php echo $campground['start_date'] ?>" required />
+                                <input class="form-control" type="date" name="start_date" id="start_date" value="<?php echo $campground['start_date'] ?>" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required />
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                         </div>

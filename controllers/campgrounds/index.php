@@ -20,7 +20,7 @@ if (mysqli_num_rows($result)) {
                         </div>
                         <div class='col-md-7'>
                             <div class='card-body'>
-                                <h5 class='card-title'>" . $row['title'] . "</h5>
+                                <h5 class='card-title'>" . $row['title'] . " <small class='text text-danger'>".$row['rating']."</small></h5>
 								<p class='card-text'>OPEN From ". $row['start_date'] ." till ". $row['end_date']."</p>
                                 <p class='card-text'>
                                     <small class='text-muted'>" . $row['location'] . " </small>

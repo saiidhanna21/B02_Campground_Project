@@ -15,7 +15,7 @@ if (empty($_SESSION["username"])) {
     header("location:http://localhost:3000/views/users/login.php");
     exit();
 } else if ($_SESSION['username'] != $result['username']) {
-    header('location:http://localhost:3000/views/errorView.php?message=Unauthroied access!!');
+    header('location:http://localhost:3000/views/errorView.php?message=Unauthorized access!!');
     exit();
 }
 
