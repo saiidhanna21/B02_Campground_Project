@@ -76,7 +76,6 @@ if (isset($_SESSION['flash'])) {
     </div>
 </main>
 <?php
-//Needs Validation to check for errors
 echo '
     <script src="../../public/javascripts/validateForms.js"></script>
     <script src="../../public/javascripts/validateDate.js"></script>';

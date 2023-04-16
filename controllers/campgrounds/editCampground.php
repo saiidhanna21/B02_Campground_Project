@@ -20,10 +20,26 @@ $campground = mysqli_fetch_assoc(mysqli_query($con, $camp));
 $images_query = "SELECT images.id,images.url FROM `images` JOIN `campgrounds` ON images.campground_id = campgrounds.id WHERE campgrounds.id=$camp_id";
 $images = mysqli_fetch_all(mysqli_query($con, $images_query));
 
+$current_date = strtotime(date('Y-m-d'));
+$end_date = strtotime($campground['end_date']);
+
+if($current_date>$end_date){
+    $display = "display:''";
+}else{
+    $display = "display:none";
+}
+
 if (!empty($_POST)) {
     extract($_POST);
+
+    if ($start_date > $end_date) {
+        $_SESSION["flash"] = flash("End Date Must be greater then Start Date", true);
+        header("location:../../views/campgrounds/editCampground.php?id=$camp_id");
+        exit();
+    }
+
     $query = "UPDATE `campgrounds` SET `title`='$title',
-`price`='$price',`description`='$description',`location`='$location' WHERE id=$camp_id";
+`price`='$price',`description`='$description',`location`='$location',`start_date`='$start_date',`end_date`='$end_date',`camps_number`='$camps_number' WHERE id=$camp_id";
     mysqli_query($con, $query);
     if (!empty($_FILES)) {
         foreach ($_FILES['images']['name'] as $key => $name) {
