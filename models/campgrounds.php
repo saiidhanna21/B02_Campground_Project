@@ -15,3 +15,4 @@ if(!mysqli_query($con,$table)){
         die;
     }
 echo "Table campgrounds Created";
+?>
