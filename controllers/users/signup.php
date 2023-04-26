@@ -8,8 +8,6 @@ if (empty($_POST)) {
     $arr["email"] = "";
     $arr["password"] = "";
 } else {
-    include('../../utils/sanitize.php');
-    $_POST = sanitize($_POST);
     extract($_POST);
 
     $arr["firstName"] = $firstName;

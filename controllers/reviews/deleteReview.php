@@ -18,7 +18,7 @@ $query = "SELECT AVG(rating)
                 
                 $campground_rating = $answer['AVG(rating)'];
                 if($campground_rating ==NULL){
-                    $campground_rating = 0;
+                    $campground_rating = 5.0;
                 }
                 
             

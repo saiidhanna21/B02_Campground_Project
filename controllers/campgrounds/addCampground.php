@@ -5,8 +5,6 @@ if (empty($_SESSION["username"])) {
     exit();
 }
 if (!empty($_POST)) {
-    include('../../utils/sanitize.php');
-    $_POST = sanitize($_POST);
     extract($_POST);
 
     if ($start_date > $end_date) {
