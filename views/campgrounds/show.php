@@ -63,35 +63,34 @@ if (!empty($_SESSION["username"])) $username = $_SESSION["username"];
             </div>'; ?>
                         <div class="col-4 offset-1">
                             <h2>Leave a Review</h2>
-                                <form action="../../controllers/reviews/addReview.php" method="post" class="mb-3 validated-form" novalidate>
-                                    <input type="hidden" name="id" value="<?php echo $id?>"/>
-                                    <input type="hidden" name="userID" value="<?php echo $userID?>"/>
-                                    <div>
-                                        <fieldset class="starability-basic">
-                                            <input type="radio" id="no-rate" class="input-no-rate" name="review_rating" value="5" checked aria-label="No rating." />
-                                            <input type="radio" id="first-rate1" name="review_rating" value="1" />
-                                            <label for="first-rate1" title="Terrible">1 star</label>
-                                            <input type="radio" id="first-rate2" name="review_rating" value="2" />
-                                            <label for="first-rate2" title="Not good">2 stars</label>
-                                            <input type="radio" id="first-rate3" name="review_rating" value="3" />
-                                            <label for="first-rate3" title="Average">3 stars</label>
-                                            <input type="radio" id="first-rate4" name="review_rating" value="4" />
-                                            <label for="first-rate4" title="Very good">4 stars</label>
-                                            <input type="radio" id="first-rate5" name="review_rating" value="5" />
-                                            <label for="first-rate5" title="Amazing">5 stars</label>
-                                        </fieldset>
+                            <form action="../../controllers/reviews/addReview.php" method="post" class="mb-3 validated-form" novalidate>
+                                <input type="hidden" name="id" value="<?php echo $id?>"/>
+                                <input type="hidden" name="userID" value="<?php echo !empty($_SESSION["username"])?$userID: ''?>"/>
+                                <div>
+                                    <fieldset class="starability-basic">
+                                        <input type="radio" id="no-rate" class="input-no-rate" name="review_rating" value="5" checked aria-label="No rating." />
+                                        <input type="radio" id="first-rate1" name="review_rating" value="1" />
+                                        <label for="first-rate1" title="Terrible">1 star</label>
+                                        <input type="radio" id="first-rate2" name="review_rating" value="2" />
+                                        <label for="first-rate2" title="Not good">2 stars</label>
+                                        <input type="radio" id="first-rate3" name="review_rating" value="3" />
+                                        <label for="first-rate3" title="Average">3 stars</label>
+                                        <input type="radio" id="first-rate4" name="review_rating" value="4" />
+                                        <label for="first-rate4" title="Very good">4 stars</label>
+                                        <input type="radio" id="first-rate5" name="review_rating" value="5" />
+                                        <label for="first-rate5" title="Amazing">5 stars</label>
+                                    </fieldset>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="review_body">Review</label>
+                                    <textarea class="form-control" name="review_body" id="review_body" cols="30" rows="3" required></textarea>
+                                    <div class="valid-feedback">
+                                        Looks Good
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="review_body">Review</label>
-                                        <textarea class="form-control" name="review_body" id="review_body" cols="30" rows="3" required></textarea>
-                                        <div class="valid-feedback">
-                                            Looks Good
-                                        </div>
-                                    </div>
-                                    <button name='add_review' class="btn btn-success">Submit</button>
-
-                                </form>
-                                <?php
-                                    include('../reviews/show.php');
-                                    echo '<script src="../../public/javascripts/validateForms.js"></script>';
-                                ?>                        
+                                </div>
+                                <button name='add_review' class="btn btn-success">Submit</button>
+                            </form>
+                            <?php
+                                include('../reviews/show.php');
+                                echo '<script src="../../public/javascripts/validateForms.js"></script>';
+                            ?>                        

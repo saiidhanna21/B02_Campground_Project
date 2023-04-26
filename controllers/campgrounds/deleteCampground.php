@@ -19,15 +19,6 @@ if (empty($_SESSION["username"])) {
     exit();
 }
 
-$current_date = strtotime(date('Y-m-d'));
-$end_date = strtotime($result['end_date']);
-
-if ($current_date < $end_date) {
-    $_SESSION["flash"] = flash("Current date must be greater than end date to perform this action", true);
-    header("location:../../views/campgrounds/index.php");
-    exit();
-}
-
 $camp = "DELETE FROM `campgrounds` WHERE `id`=$camp_id";
 mysqli_query($con, $camp);
 $_SESSION["flash"] = flash('You have deleted the campground succesfully!', false);
