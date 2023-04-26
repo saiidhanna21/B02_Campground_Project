@@ -44,9 +44,12 @@ include("../../controllers/users/signup.php");
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="password">Password</label>
-                            <input class="form-control" type="password" id="password" name="password" value="<?php echo $arr['password'] ?>" required>
+                            <input class="form-control" type="password" id="password" name="password" value="<?php echo $arr['password'] ?>" pattern="^(?=.*[A-Z])(?=.*[!@#$%^&*()_+-=])[a-zA-Z0-9!@#$%^&*()_+-=]{8,}$" required>
                             <div class="valid-feedback">
                                 Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please use at least 8 characters, including one uppercase letter and one symbol (e.g. ! @ # $ % ^ & * ( ) _ + - =)
                             </div>
                         </div>
                         <!-- We may remove it -->

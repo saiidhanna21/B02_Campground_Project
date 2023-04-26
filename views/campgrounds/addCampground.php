@@ -65,7 +65,7 @@ if (isset($_SESSION['flash'])) {
                 <div class="mb-3">
                     <label class="form-label" for="description">Description*:
                     </label>
-                    <textarea class="form-control" type="text" name="description" id="description" required></textarea>
+                    <textarea class="form-control" type="text" name="description" id="description" maxlength="180" required></textarea>
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="mb-3">
