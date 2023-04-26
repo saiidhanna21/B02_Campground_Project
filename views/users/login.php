@@ -13,15 +13,15 @@ include("../../controllers/users/login.php");
                         <div class="mb-3">
                             <label class="form-label" for="username_OR_email">Username or Email </label>
                             <input class="form-control" type="text" name="username_OR_email" id="username_OR_email" required autofocus>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="password">Password </label>
-                            <input class="form-control" type="password" name="password" id="password" required>
-                            <div class="valid-feedback">
-                                Looks good!
+                            <div class="position-relative">
+                                <input class="form-control" type="password" name="password" id="password" required>
+                                <button type="button" id="eyeball">
+                                    <div class="eye"></div>
+                                </button>
+                                <div id="beam"></div>
                             </div>
                         </div>
                         <button class="btn btn-success btn-block">Submit</button>
@@ -33,7 +33,8 @@ include("../../controllers/users/login.php");
 </div>
 </body>
 <?php
-echo '<script src="../../public/javascripts/validateForms.js"></script>';
+echo '<script src="../../public/javascripts/validateForms.js"></script>
+      <script src="../../public/javascripts/revealPassword.js"></script>';
 ?>
 
 </html>
